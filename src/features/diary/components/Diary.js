@@ -158,7 +158,7 @@ export default function Diary() {
                     }
                   />
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <div className="Watch">
                     <div style={{ borderCollapse: "collapse" }}>
                       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -177,7 +177,7 @@ export default function Diary() {
                       </LocalizationProvider>
                     </div>
                   </div>
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="center" style={{ width: "30%" }}>
                   <DiarySmallText>
                     {findDate.toLocaleString("ko-KR", {
@@ -188,13 +188,13 @@ export default function Diary() {
                     })}
                   </DiarySmallText>
                 </TableCell>
-                <TableCell style={{ textAlign: "center", width: "15%" }}>
+                {/* <TableCell style={{ textAlign: "center", width: "15%" }}>
                   <img
                     style={{ width: "16vw", cursor: "pointer" }}
                     src={require("features/diary/images/today.png").default}
                     onClick={() => setFindDate(today)}
                   />
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="center">
                   <DiarySmallText>{diary.weather}</DiarySmallText>
                   <img style={{ width: "5vw" }} src={sunny} />

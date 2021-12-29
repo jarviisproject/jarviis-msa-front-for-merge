@@ -86,10 +86,10 @@ export default function Flower() {
               }))
             }
           } >오늘 루틴과 꽃 만들기</Button>
-            <h2>지금까지 키운 꽃 :</h2>
+            {/* <h2>지금까지 키운 꽃 :</h2>
             {Object.keys(flower).map((value, index, array) => (
                 <p><b>{flower[value].title}</b> :: {flower[value].step} 회</p>
-            ))}
+            ))} */}
             {Object.keys(flower).map((value, index, array) => (
                 <div>
                     {flower[value].grade == 0 ? <></>

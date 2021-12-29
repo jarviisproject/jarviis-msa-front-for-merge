@@ -133,7 +133,7 @@ export default function DiaryTest() {
           onClick={
             () => {
               dispatch(diaryCreateRequest({
-                user_id : 1
+                user_id: 1
               }))
             }
           } >오늘 일기 만들기</Button>
@@ -158,7 +158,7 @@ export default function DiaryTest() {
                     }
                   />
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <div className="Watch">
                     <div style={{ borderCollapse: "collapse" }}>
                       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -177,7 +177,7 @@ export default function DiaryTest() {
                       </LocalizationProvider>
                     </div>
                   </div>
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="center" style={{ width: "30%" }}>
                   <DiarySmallText>
                     {findDate.toLocaleString("ko-KR", {
@@ -188,7 +188,7 @@ export default function DiaryTest() {
                     })}
                   </DiarySmallText>
                 </TableCell>
-                <TableCell style={{ textAlign: "center", width: "15%" }}>
+                {/* <TableCell style={{ textAlign: "center", width: "15%" }}>
                   <img
                     style={{ width: "16vw", cursor: "pointer" }}
                     src={require("features/diary/images/today.png").default}
@@ -197,49 +197,29 @@ export default function DiaryTest() {
                       window.location.href="../diary/diary"
                     }}
                   />
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="center">
                   <DiarySmallText>{diary.weather}</DiarySmallText>
                   <img style={{ width: "5vw" }} src={sunny} />
                 </TableCell>
                 <TableCell align="center" style={{ width: "15%" }}>
-                  {/* {date.toISOString().substring(0, 10) <
-                    today.toISOString().substring(0, 10)} */}
-                  {/* {findDate.toString().substring(0, 10) < today.toString().substring(0, 10) ? */}
-                  {findDate.getDate() < today.getDate() ?
-                    (
-                      <>
-                        <img
-                          class="wobble-hor-bottom"
-                          style={{
-                            width: "4vw",
-                            cursor: "pointer",
-                            visibility: "visible",
-                          }}
-                          src={
-                            require("features/diary/images/fingerr.png")
-                              .default
-                          }
-                          onClick={() =>
-                            // setFindDate(new Date(findDate.setDate(findDate.getDate() + 1)))
-                            // addDate()
-                            window.location.href="../diary/diary"
-                          }
-                        />
-                      </>
-                    ) : (
-                      <img
-                        class="wobble-hor-bottom"
-                        style={{
-                          width: "20%",
-                          cursor: "pointer",
-                          visibility: "hidden",
-                        }}
-                        src={
-                          require("features/diary/images/fingerr.png").default
-                        }
-                      />
-                    )}
+                  <img
+                    class="wobble-hor-bottom"
+                    style={{
+                      width: "4vw",
+                      cursor: "pointer",
+                      visibility: "visible",
+                    }}
+                    src={
+                      require("features/diary/images/fingerr.png")
+                        .default
+                    }
+                    onClick={() =>
+                      // setFindDate(new Date(findDate.setDate(findDate.getDate() + 1)))
+                      // addDate()
+                      window.location.href = "../diary/diary"
+                    }
+                  />
                 </TableCell>
               </TableRow>
               <TableRow sx={{ border: 0, textAlign: "center" }}>
@@ -258,7 +238,7 @@ export default function DiaryTest() {
                   style={{ textAlign: "center" }}
                 >
                   <DiarySmallText>
-                  <img class="diary-img" src={diaryimg2} />
+                    <img class="diary-img" src={diaryimg2} />
                     {/* <img class="diary-img2" src="src/features/diary/images/merged_image_2021-12-28.jpg" /> */}
                   </DiarySmallText>
                 </TableCell>
