@@ -169,9 +169,6 @@ export const {
     historyRemoveRequest,
     historyRemoveSuccess,
     historyRemoveFailure,
-    historyTodoRequest,
-    historyTodoSuccess,
-    historyTodoFailure
 } = actions;
 
 export default reducer;
