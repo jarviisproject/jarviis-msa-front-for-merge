@@ -46,19 +46,18 @@ function* remove(action: PayloadAction<RemovePayload>) {
 }
 
 function* exist(action: PayloadAction<ExistPayload>) {
-    try {
-      const result: UserDataPayload = yield call(
-        userAPI.existAPI,
-        action.payload
-      );
-      yield put(existSuccess(result));
-      alert("가능한 아이디입니다.")
-    } catch (error: any) {
-      yield put(existFailure(error))
-      alert(error)
-      alert("쓸수없는 아이디입니다.")
-    }
+  try {
+    const result: UserDataPayload = yield call(
+      userAPI.existAPI,
+      action.payload
+    );
+    yield put(existSuccess(result));
+    alert("가능한 아이디입니다.")
+  } catch (error: any) {
+    yield put(existFailure(error))
+    alert("쓸수없는 아이디입니다.")
   }
+}
 
 
   function* join(action: PayloadAction<JoinPayload>) {
