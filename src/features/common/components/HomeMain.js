@@ -23,7 +23,7 @@ export default function HomeMain() {
         </Fade>
       </h1> */}
 
-      <Flash ><h3>Merry Christmas <br/> HM & JH & IS  </h3>
+      <Flash ><h3>Happy New Year <br/> HM & JH & IS  </h3>
       <span role="emoji" aria-lavel="tree" style={{fontSize:"30vh"}}>🎄</span>
       </Flash>
       
