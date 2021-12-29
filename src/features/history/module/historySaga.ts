@@ -13,7 +13,6 @@ function* create(action: PayloadAction<HistoryPayload>) {
             action.payload
         );
         yield put(historySuccess(result));
-        alert(JSON.stringify(result.data.log_type))
         if (result.data.log_type != "todo") {
             window.location.href = "/history/history"
         }
@@ -28,17 +27,14 @@ export function* watchCreate() {
 }
 //리스트
 function* list(action: PayloadAction<ListDataPayload>) {
-    alert('# 3 SAGA - historyRequest')
-
+    // alert('# 3 SAGA - historyRequest')
     try {
         const result: HistoryDataPayload = yield call(
             historyAPI.listAPI,
             action.payload
         );
-        alert('# 5 SAGA success - historyRequest')
+        // alert('# 5 SAGA success - historyRequest')
         yield put(historyListSuccess(result));
-        
-
         window.localStorage.setItem('sessionHistory', JSON.stringify(result.data))
 
     } catch (error: any) {

@@ -90,12 +90,12 @@ const historySlice = createSlice({
     
         //리스트
         historyListRequest(state: HistoryState, _action: PayloadAction<ListDataPayload>) {
-            alert('# 2 slice - historyRequest'),
+            // alert('# 2 slice - historyRequest'),
             state.historyLoading = true;
             state.error = null;
         },
         historyListSuccess(state: HistoryState, action: PayloadAction<HistoryDataPayload>) {
-            alert('# 6 success')
+            // alert('# 6 success')
             state.historyLoading = false;
             state.historyData = action.payload;
         },

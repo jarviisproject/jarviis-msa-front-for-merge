@@ -53,7 +53,7 @@ export default function TimelineLog() {
   const today = new window.Date()
   const [date, setDate] = useState(dateFormat(today))
   useEffect(() => {
-    alert('# 1 dispatch - historyRequest'),
+    // alert('# 1 dispatch - historyRequest'),
     dispatch(historyListRequest({
       user_id: 1,
       date: date
@@ -62,7 +62,7 @@ export default function TimelineLog() {
   const dispatch = useDispatch()
   const mytest = useSelector(state => state.history.historyData)
   if (mytest != null && counter < 1) {
-    alert('# 7 component - historyRequest'),
+    // alert('# 7 component - historyRequest'),
     setCounter(counter + 1)
     setJuudata(mytest['data'])
   }

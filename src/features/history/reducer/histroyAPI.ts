@@ -10,16 +10,15 @@ const headers = {
 }
 
 function createAPI( data: HistoryPayload){
-    alert(JSON.stringify(data))
+    // alert(JSON.stringify(data))
     return axios.post(`${SERVER}/history/create`, JSON.stringify(data), { headers })
 }
 function listAPI( data: ListDataPayload){
-    alert('# 4 LIST - historyRequest')
-
+    // alert('# 4 LIST - historyRequest')
     return axios.post(`${SERVER}/history/list`,JSON.stringify(data), { headers })
 }
 function modifyAPI( data: HistoryModifyPayload){
-    alert(JSON.stringify(data))
+    // alert(JSON.stringify(data))
     return axios.put(`${SERVER}/history/modify`,JSON.stringify(data), { headers })
 }
 function autoAddAPI( data: HistoryDataPayload){

@@ -8,17 +8,13 @@ const headers = {
 };
 
 function loginAPI(data: LoginPayload) {
-  alert(`"API data :: ${JSON.stringify(data)}"`)
-
+  // alert(`"API data :: ${JSON.stringify(data)}"`)
   return axios.post(`${SERVER}/users/login`, JSON.stringify(data), { headers });
-//   const test = axios.post(`${SERVER}users/login`, JSON.stringify(data), { headers });
-//   alert(` API data :: ${JSON.stringify(test)}`)
-//   return test
 }
 // 장고연결
 function joinAPI(data: JoinPayload) {
-  alert(`${JSON.stringify(data)}`)
-  alert("간다!!!!!!!!!!!!!!!!!!")
+  // alert(`${JSON.stringify(data)}`)
+  // alert("간다!!!!!!!!!!!!!!!!!!")
   return axios.post(`${SERVER}/users`, JSON.stringify(data), { headers });
 }
 // function joinAPI(data: JoinPayload) {
@@ -29,11 +25,11 @@ function existAPI(data: ExistPayload) {
   return axios.get(`${SERVER}/users/exist/${data}`);
 }
 function modifyAPI(data: ModifyPayload) {
-  alert(`"API data :: ${JSON.stringify(data)}"`)
+  // alert(`"API data :: ${JSON.stringify(data)}"`)
   return axios.put(`${SERVER}/users`, JSON.stringify(data), { headers });
 }
 function removeAPI(data: RemovePayload) {
-  alert(`"API data :: ${JSON.stringify(data)}"`)
+  // alert(`"API data :: ${JSON.stringify(data)}"`)
   return axios.delete(`${SERVER}/users/remove/${data}`);
 }
 function listAPI(data: "") {
