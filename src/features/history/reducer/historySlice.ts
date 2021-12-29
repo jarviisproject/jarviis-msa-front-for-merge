@@ -9,7 +9,7 @@ export interface HistoryDataPayload {
     // address: string,
     // log_date: string,
     // weather: string,
-    data: [{
+    data: {
         id: number;
         x: string;
         y: string;
@@ -21,7 +21,7 @@ export interface HistoryDataPayload {
         contents: string;
         user_id: number;
 
-    }]
+    }
 }
 
 export interface ListDataPayload {
@@ -87,6 +87,7 @@ const historySlice = createSlice({
             state.historyLoading = true;
             state.error = action.payload;
         },
+    
         //리스트
         historyListRequest(state: HistoryState, _action: PayloadAction<ListDataPayload>) {
             alert('# 2 slice - historyRequest'),
@@ -167,7 +168,10 @@ export const {
     historyAutoAddFailure,
     historyRemoveRequest,
     historyRemoveSuccess,
-    historyRemoveFailure
+    historyRemoveFailure,
+    historyTodoRequest,
+    historyTodoSuccess,
+    historyTodoFailure
 } = actions;
 
 export default reducer;

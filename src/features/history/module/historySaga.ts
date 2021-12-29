@@ -13,7 +13,10 @@ function* create(action: PayloadAction<HistoryPayload>) {
             action.payload
         );
         yield put(historySuccess(result));
-        window.location.href = "/history/history"
+        alert(JSON.stringify(result.data.log_type))
+        if (result.data.log_type != "todo") {
+            window.location.href = "/history/history"
+        }
     } catch (error: any) {
         yield put(historyFailure(error))
         alert(`ERROR :: ${error}`)
