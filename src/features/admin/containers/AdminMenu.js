@@ -23,12 +23,6 @@ export default function AdminMenu() {
               <a href="/admin#t1">
                 <li class="icon fa fa-pie-chart fa-2x " id="fa"></li>
               </a>
-              <a href="/admin#t2">
-                <li class="icon fa fa-line-chart fa-2x" id="fa"></li>
-              </a>
-              {/* <a href="/admin#t3">
-                <li class="icon fa fa-rocket fa-2x" id="fa"></li>
-              </a> */}
               <a
                 onClick={(e) => {
                   e.preventDefault();
@@ -52,7 +46,7 @@ export default function AdminMenu() {
                 <h1>admin Page</h1>
                 <div class="adminDiv">
                   <PieChart data={PieData} />
-                  <LogChart />
+                  <UserList/>
                 </div>
               </section>
             </div>

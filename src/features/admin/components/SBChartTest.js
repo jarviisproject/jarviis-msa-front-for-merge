@@ -1,17 +1,25 @@
-// import SBGrid from "./SBGrid";
+import SBGrid from "./SBGrid";
 import { useEffect, useState } from "react";
 import SBChart from "./SBChart";
-import {Button, Modal} from "react-bootstrap";
 
 function SBChartTest() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const [datagrid, setDatagrid] = useState(null);
+  const [datagrid, setDatagrid] = useState(null);
   // const [datagrid2, setDatagrid2] = useState(null);
   const [chart, setChartData] = useState(null);
-  // const tempData1 = [{ col0: "데이터1" }];
+  const tempData1 = [
+    { col0: "한국", col1: "홍길동", col2: "1900-04-21", col3: "2011-01-01", col4: "010-1234-5678", col5: "admin@admin.com" },
+    { col0: "한국", col1: "김 구",  col2: "1876-08-29", col3: "2012-01-01", col4: "010-1212-5876", col5: "kim@admin.com" },
+    { col0: "한국", col1: "윤봉길", col2: "1908-06-21", col3: "2010-01-01", col4: "010-9426-2312", col5: "yoon@admin.com" },
+    { col0: "한국", col1: "유관순", col2: "1902-12-16", col3: "2019-01-01", col4: "010-3425-6943", col5: "you@admin.com" },
+    { col0: "한국", col1: "안창호", col2: "1879-11-02", col3: "1999-11-21", col4: "010-9087-1436", col5: "an@admin.com" },
+    { col0: "한국", col1: "한용운", col2: "1879-08-29", col3: "2014-03-31", col4: "010-1964-3680", col5: "han@admin.com" },
+    { col0: "한국", col1: "서수완", col2: "1993-08-23", col3: "2022-01-01", col4: "010-1234-5678", col5: "seo@admin.com" }
+  
+  ];
   // const tempData2 = [{ col0: "데이터2" }];
   //차트데이터
   const chart_Data = [
@@ -36,11 +44,11 @@ function SBChartTest() {
     
 ]
 
-  // useEffect(() => {
-  //   if (datagrid) {
-  //     console.log(datagrid);
-  //   }
-  // }, [datagrid]);
+  useEffect(() => {
+    if (datagrid) {
+      console.log(datagrid);
+    }
+  }, [datagrid]);
 
   
   // useEffect(() => {
@@ -58,13 +66,44 @@ function SBChartTest() {
   }, [chart]);
   return (
     <div className="App">
-      {/* <SBGrid
+      <SBGrid
         id={`datagrid`}
         jsonref={tempData1}
         columns={[
           {
-            caption: "col0",
+            caption: "국적",
             ref: "col0",
+            style: "text-align:center;",
+            type: "input",
+            
+          },
+          {
+            caption: "이름",
+            ref: "col1",
+            style: "text-align:center;",
+            type: "input",
+          },
+          {
+            caption: "생년월일",
+            ref: "col2",
+            style: "text-align:center;",
+            type: "input",
+          },
+          {
+            caption: "입사일",
+            ref: "col3",
+            style: "text-align:center;",
+            type: "input",
+          },
+          {
+            caption: "전화번호",
+            ref: "col4",
+            style: "text-align:center;",
+            type: "input",
+          },
+          {
+            caption: "이메일",
+            ref: "col5",
             style: "text-align:center;",
             type: "input",
           },
@@ -74,10 +113,11 @@ function SBChartTest() {
           selectmode: "free",
         }}
         parentid={`SBGridArea`}
-        style={{ height: "350px" }}
+        style={{ height: "200px" }}
         setDatagrid={setDatagrid}
+        
       />
-      <SBGrid
+      {/* <SBGrid
         id={`datagrid2`}
         jsonref={tempData2}
         columns={[
@@ -120,54 +160,6 @@ function SBChartTest() {
         }}
         setChartData={setChartData}
       />
-      <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
-      </Button>
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-        style={{
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.75)'
-          },
-          content: {
-            position: 'absolute',
-            top: '40px',
-            left: '40px',
-            right: '40px',
-            bottom: '40px',
-            border: '1px solid #ccc',
-            background: '#fff',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
-            outline: 'none',
-            padding: '20px'
-          }
-        }}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-         디지고싶냐 모달 안뜨냐?
-         
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary">Understood</Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }
