@@ -11,7 +11,7 @@ import { Route, Routes } from "react-router-dom"; //21-11-06 v6로 버전업이�
 import { Diary, DiaryTest} from "features/diary";
 import { Review } from "features/review";
 import { History } from "features/history";
-import { About } from "features/suggestion";
+import { Event } from "features/suggestion";
 import { Calendar } from "features/calendar";
 import { AdminLogin, AdminPage } from "features/admin";
 import { AppTasks } from "features/todo";
@@ -36,7 +36,7 @@ const App = () => {
         <Route path='/diary/prev' element={<DiaryTest />} />
         <Route path='/review/review' element={<Review />} />
         <Route path='/history/history' element={<History />} />
-        <Route path='/suggestion/about' element={<About />} />
+        <Route path='/suggestion/about' element={<Event />} />
         <Route path='/calendar/calendar' element={<Calendar />} />
         <Route path='/test/SBChartTest' element={<SBChartTest/>} />
         {/* <Route path='/test/test1' element={<Test />} /> */}

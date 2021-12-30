@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { LayOut } from 'features/common';
+import EventAdd from './EventAdd';
+import { eventRequest } from '../reducer/calendarSlice';
+
 // 추가
 // yarn add @fullcalendar/react
 // yarn add @fullcalendar/daygrid
@@ -12,35 +16,27 @@ import { LayOut } from 'features/common';
 
 
 const Calendar = () => {
-  const events = [
-    {
-      id: 1,
-      title: 'gym',
-      start: '2021-11-03T10:00:00',
-      end: '2021-11-03T12:00:00',
-      color: "#99ccff",
-      textColor: "black"
-    },
-    {
-      id: 2,
-      title: 'project 완성',
-      start: '2021-11-04T13:00:00',
-      end: '2021-11-04T18:00:00',
-      color: "#b266ff",
-      textColor: "black"
-    },
-    { id: 3, title: '기사시험 접수 기간', start: '2021-11-29', end: '2021-12-24' },
-    {
-      id: 4,
-      title: '강남역 미팅',
-      start: '2021-11-04T09:00:00',
-      end: '2021-11-04T11:00:00',
-    },
-  ];
+
+  const [events, setEvents] = useState([]);
+  const [counter, setCounter] = useState(0)
+
+  const eventData = useSelector(state => state.event.eventData);
+  console.log(`이벤트까지 왔다... ${JSON.stringify(eventData)}`)
+  useEffect(() => {
+    dispatch(eventRequest({user_id: 1}));
+  }, []);
+ 
+  const dispatch = useDispatch();
+ 
+  if (eventData != null && counter < 1) {
+    setCounter(counter + 1)
+    setEvents(eventData['data'])
+  }
   
   return (
     <LayOut>
     <div className="App" style={{width:"1000px", marginLeft:"262px"}}>
+    {/* <EventAdd /> */}
     <FullCalendar
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       initialView="dayGridMonth"
@@ -49,6 +45,7 @@ const Calendar = () => {
       nowIndicator
       dateClick={(e) => console.log(e.dateStr)}
       eventClick={(e) => console.log(e.event.id)}
+      // dateClick={EventAdd}
     />
   </div>
   </LayOut>
