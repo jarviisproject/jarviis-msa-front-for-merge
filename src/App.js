@@ -36,7 +36,7 @@ const App = () => {
         <Route path='/diary/prev' element={<DiaryTest />} />
         <Route path='/review/review' element={<Review />} />
         <Route path='/history/history' element={<History />} />
-        <Route path='/suggestion/about' element={<Event />} />
+        <Route path='/suggestion/event' element={<Event />} />
         <Route path='/calendar/calendar' element={<Calendar />} />
         <Route path='/test/SBChartTest' element={<SBChartTest/>} />
         {/* <Route path='/test/test1' element={<Test />} /> */}
