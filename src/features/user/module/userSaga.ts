@@ -28,19 +28,16 @@ import { userAPI } from "features/user";
 
 function* remove(action: PayloadAction<RemovePayload>) {
   try {
-    alert(action.payload)
     const result: UserDataPayload = yield call(
       userAPI.removeAPI,
       action.payload
     );
-    alert("돌아옴")
     yield put(deleteSuccess(result));
     localStorage.clear()
+    alert("필요하시면 다시 돌아오세요🤖")
     window.location.href = "/home"
 
-
   } catch (error: any) {
-    // alert("아이디오류")
     yield put(modifyFailure(error));
   }
 }
@@ -71,8 +68,8 @@ function* exist(action: PayloadAction<ExistPayload>) {
       window.location.href = 'users/login'
       alert("🎄회원가입을 축하드립니다🎄")
     } catch (error: any) {
-      // alert("아이디오류")
       yield put(joinFailure(error));
+      alert("정보를 다시 수정해주세요😥")
     }
   }
   function* login(action: PayloadAction<LoginPayload>) {
@@ -81,16 +78,11 @@ function* exist(action: PayloadAction<ExistPayload>) {
         userAPI.loginAPI,
         action.payload
       );
-      
       yield put(loginSuccess(result));
-      // window.localStorage.setItem('sessionToken', JSON.parse(JSON.stringify(result.data.tokenData)))
-      // window.localStorage.setItem('sessionUser', JSON.stringify(result.data))
-      alert(JSON.stringify(result.data))
       window.localStorage.setItem('sessionUser', JSON.stringify(result.data))
-      alert("로그인 성공 후 홈으로 이동")
       window.location.href = "/home"
     } catch (error: any) {
-      alert("아이디 혹은 비밀번호가 틀렸습니다!")
+      alert("아이디 혹은 비밀번호가 틀렸습니다😞")
       yield put(loginFailure(error));
     }
   }
@@ -101,11 +93,8 @@ function* exist(action: PayloadAction<ExistPayload>) {
         action.payload
       );
       yield put(modifySuccess(result));
-      // const test = result.config.data
-      // alert(`result? :: ${test} :: type :: ${typeof test}`)
-      // alert(`result parse :: ${JSON.parse(JSON.stringify(test))} :: type :: ${typeof JSON.parse(JSON.stringify(test))}`)
       window.localStorage.setItem('sessionUser', JSON.parse(JSON.stringify(result.config.data)))
-      // alert(`SESSION 저장됨? ${window.localStorage.getItem('sessionUser')}`)
+      alert("수정이 완료되었습니다✔️")
       window.location.href = "/mypage/setting"
 
 
@@ -118,8 +107,6 @@ function* exist(action: PayloadAction<ExistPayload>) {
   // Watch 함수
   export function* watchLogin() {
     yield takeLatest(loginRequest.type, login);
-    // loginRequest에서의 type이 실행되면 login함수가 실행되는데
-    // loginRequest의 action이 있으면 그 액션이 login함수의 인자로 들어갑니다.
   }
   export function* watchJoin() {
     yield takeLatest(joinRequest.type, join);

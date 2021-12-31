@@ -41,10 +41,8 @@ export function* watchDiaryMemo() {
     yield takeLatest(diaryMemoRequest.type, memo);
 }
 
-// create
 function* create(action: PayloadAction<DiaryCreatePayload>) {
     try {
-        // alert("SAGA!")
         const result: DiaryCreatePayload = yield call(
             diaryAPI.createaAPI,
             action.payload

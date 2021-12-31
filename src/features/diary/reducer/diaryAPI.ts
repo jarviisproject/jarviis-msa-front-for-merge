@@ -13,11 +13,13 @@ function findAPI( data: DiaryFindPayload){
 }
 
 function memoAPI( data: DiaryMemoPayload){
-    alert(`API :: data :: ${JSON.stringify(data)}`)
+    // alert(`API :: data :: ${JSON.stringify(data)}`)
     return axios.put(`${SERVER}/diary/memo`,JSON.stringify(data), { headers })
 }
 function createaAPI( data: DiaryCreatePayload){
-    alert(`API :: data :: ${JSON.stringify(data)}`)
+    // alert(`API :: data :: ${JSON.stringify(data)}`)
+    alert("일기를 열심히 쓰고있는중이에요✍️...")
+
     return axios.get(`${SERVER}/diary/upload/${data.user_id}`)
 }
 export default {

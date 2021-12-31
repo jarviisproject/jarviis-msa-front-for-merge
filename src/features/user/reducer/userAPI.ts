@@ -8,28 +8,18 @@ const headers = {
 };
 
 function loginAPI(data: LoginPayload) {
-  // alert(`"API data :: ${JSON.stringify(data)}"`)
   return axios.post(`${SERVER}/users/login`, JSON.stringify(data), { headers });
 }
-// 장고연결
 function joinAPI(data: JoinPayload) {
-  // alert(`${JSON.stringify(data)}`)
-  // alert("간다!!!!!!!!!!!!!!!!!!")
   return axios.post(`${SERVER}/users`, JSON.stringify(data), { headers });
 }
-// function joinAPI(data: JoinPayload) {
-//   alert(`=====넘어감${JSON.stringify(data)}`)
-//   return axios.post(`${SERVER}users/join`, JSON.stringify(data), { headers });
-// }
 function existAPI(data: ExistPayload) {
   return axios.get(`${SERVER}/users/exist/${data}`);
 }
 function modifyAPI(data: ModifyPayload) {
-  // alert(`"API data :: ${JSON.stringify(data)}"`)
   return axios.put(`${SERVER}/users`, JSON.stringify(data), { headers });
 }
 function removeAPI(data: RemovePayload) {
-  // alert(`"API data :: ${JSON.stringify(data)}"`)
   return axios.delete(`${SERVER}/users/remove/${data}`);
 }
 function listAPI(data: "") {

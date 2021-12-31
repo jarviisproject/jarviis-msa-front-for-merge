@@ -116,14 +116,11 @@ const userSlice = createSlice({
       state: UserState,
       action: PayloadAction<UserLoginDataPayload>
     ) {
-      alert(`서버 로그인 성공 ${JSON.stringify(action.payload)}`)
       state.userLoading = false;
       state.userData = action.payload;
     },
 
     loginFailure(state: UserState, action: PayloadAction<{ error: any }>) {
-      alert(`서버 로그인 실패 ${JSON.stringify(action.payload)}`)
-
       state.userLoading = false;
       state.error = action.payload;
     },
@@ -137,7 +134,6 @@ const userSlice = createSlice({
       state.userData = action.payload;
     },
     joinFailure(state: UserState, action: PayloadAction<{ error: any }>) {
-      alert(`회원가입 실패 ${action.payload}`)
       state.userLoading = false;
       state.error = action.payload;
     },
@@ -171,7 +167,6 @@ const userSlice = createSlice({
       state.error = null;
     },
     deleteRequest(state: UserState, _action: PayloadAction<RemovePayload>) {
-      alert(`slice :: ${_action.payload}`)
       state.userLoading = true;
       state.error = null;
     },

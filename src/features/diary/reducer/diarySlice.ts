@@ -73,14 +73,14 @@ const DiarySlice = createSlice({
             state.error = null;
         },
         diaryMemoSuccess(state: DiaryState, action: PayloadAction<DiaryMemoPayload>) {
-            alert("Slice SUCCESS!")
+            // alert("Slice SUCCESS!")
             state.diaryLoading = false;
             state.diaryData = action.payload;
-            alert(`돌아온 데이터 :: ${JSON.stringify(action.payload)}`)
+            // alert(`돌아온 데이터 :: ${JSON.stringify(action.payload)}`)
             window.location.href = "../diary/diary"
         },
         diaryMemoFailure(state: DiaryState, action: PayloadAction<{ error: any }>) {
-            alert(`Slice FAIL! :: ${action.payload}`)
+            // alert(`Slice FAIL! :: ${action.payload}`)
             state.diaryLoading = true;
             state.error = action.payload;
         },
@@ -90,13 +90,13 @@ const DiarySlice = createSlice({
             state.error = null;
         },
         diaryCreateSuccess(state: DiaryState, action: PayloadAction<DiaryCreatePayload>) {
-            alert("Slice SUCCESS!")
+            // alert("Slice SUCCESS!")
             state.diaryLoading = false;
             // state.diaryData = action.payload;
             window.location.href = "../diary/diary"
         },
         diaryCreateFailure(state: DiaryState, action: PayloadAction<{ error: any }>) {
-            alert(`Slice FAIL! :: ${action.payload}`)
+            // alert(`Slice FAIL! :: ${action.payload}`)
             state.diaryLoading = true;
             state.error = action.payload;
         },

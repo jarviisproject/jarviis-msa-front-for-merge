@@ -21,8 +21,8 @@ import { existRequest, joinRequest } from '../reducer/userSlice';
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  username: yup.string().required('You must enter your name'),
-  email: yup.string().email('You must enter a valid email').required('You must enter a email'),
+  user_name: yup.string().required('You must enter your name'),
+  user_email: yup.string().email('You must enter a valid email').required('You must enter a email'),
   password: yup
     .string()
     .required('Please enter your password.')
@@ -36,8 +36,8 @@ const schema = yup.object().shape({
 });
 
 const defaultValues = {
-  user_name: 'admin',
-  user_email: 'admin@admin.com',
+  user_name: '',
+  user_email: '',
   phone: '000-0000-0000',
   birth: '1993-08-23',
   password: '123123123',
@@ -103,18 +103,17 @@ export default function Register3Page() {
                     })) })}
                 >
                   <Controller
-                    name="username"
+                    name="user_name"
                     control={control}
                     render={({ field }) => (
                       <TextField
                         {...field}
                         className="mb-16"
                         label="Name"
-                        name='admin'
                         autoFocus
-                        type="username"
-                        error={!!errors.username}
-                        helperText={errors?.username?.message}
+                        type="user_name"
+                        error={!!errors.user_name}
+                        helperText={errors?.user_name?.message}
                         variant="outlined"
                         required
                         fullWidth
@@ -123,20 +122,18 @@ export default function Register3Page() {
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
                   <Controller
-                    id='email'
-                    name="email"
+                    id='user_email'
+                    name="user_email"
                     control={control}
                     render={({ field }) => (
                       <TextField
                         {...field}
                         className="mb-16"
                         label="Email"
-                        type="email"
-                        name='admin@admin.com'
-                        error={!!errors.email}
-                        helperText={errors?.email?.message}
+                        type="user_email"
+                        error={!!errors.user_email}
+                        helperText={errors?.user_email?.message}
                         variant="outlined"
                         required
                         fullWidth
