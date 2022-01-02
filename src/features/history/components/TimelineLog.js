@@ -95,7 +95,7 @@ export default function TimelineLog() {
         <Date>{juudata[value].log_date} ..<b>{juudata[value].weather}</b></Date>
         <Title>{juudata[value].log_type}</Title>
         <Contents>
-          <p><b>{juudata[value].location}</b>에서 {juudata[value].contents}</p>
+          <p><b>ID - {juudata[value].id} ::{juudata[value].location}</b>에서 {juudata[value].contents}</p>
           {/* <p>{JSON.stringify(juudata[value])}</p> */}
           <TimelineModify history={juudata[value]} />
         </Contents>

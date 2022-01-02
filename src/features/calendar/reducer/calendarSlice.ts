@@ -69,11 +69,13 @@ const eventSlice = createSlice({
 
     //suggestion
     eventRequest(state: eventState, _action: PayloadAction<UserParamType>) {
+      console.log('reducer 실행')
       state.eventLoading = true;
       state.error = null;
     },
 
     eventSuccess(state: eventState, action: PayloadAction<eventDataPayload>) {
+      console.log('성공')
       state.eventLoading = false;
       state.eventData = action.payload;
     },

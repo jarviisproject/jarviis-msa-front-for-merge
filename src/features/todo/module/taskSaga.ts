@@ -38,6 +38,7 @@ function* addTask(action: PayloadAction<addTaskPayload>){
             action.payload
         );
         yield put(addTaskSuccess(result));
+        location.reload()
     }
     catch (error:any){
         yield put(addTaskFailure(error))
@@ -51,6 +52,7 @@ function* deleteTask(action: PayloadAction<idParamType>){
             action.payload
         );
         yield put(deleteTaskSuccess(result));
+        location.reload()
     }
     catch (error:any){
         yield put(deleteTaskFailure(error))

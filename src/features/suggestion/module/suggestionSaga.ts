@@ -7,16 +7,12 @@ import { suggestionFailure, SuggestionListDataPayload, SuggestionPayload, sugges
 
 //리스트
 function* suggestionUser(action: PayloadAction<SuggestionPayload>) {
-  // alert("suggestion saga action 감지")
   try {
       const result: SuggestionListDataPayload = yield call(
         suggestionAPI.suggestionAPI,
         action.payload
       );
-      // alert(`saga action 실행 후 alert ::: ${JSON.stringify(action.payload)}`)
       yield put(suggestionSuccess(result));
-      // alert("suggestion saga 실행")
-      // window.localStorage.setItem('sessionSuggestion', JSON.stringify(result.data)) 
 
   } catch (error: any) {
       yield put(suggestionFailure(error))

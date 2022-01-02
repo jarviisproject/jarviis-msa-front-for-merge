@@ -116,11 +116,14 @@ const userSlice = createSlice({
       state: UserState,
       action: PayloadAction<UserLoginDataPayload>
     ) {
+      alert(`외않되 :: ${JSON.stringify(action.payload)}`)
       state.userLoading = false;
       state.userData = action.payload;
     },
 
     loginFailure(state: UserState, action: PayloadAction<{ error: any }>) {
+      
+      alert(`외않되 :: ${JSON.stringify(action.payload)}`)
       state.userLoading = false;
       state.error = action.payload;
     },

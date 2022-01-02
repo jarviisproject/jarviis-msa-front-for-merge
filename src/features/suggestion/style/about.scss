@@ -1,54 +1,5 @@
 /*------- 11. About style ------ */
 
-.welcome-content {
-  background-color: #f9f7e8;
-  color: #62bfad;
-  h5 {
-    font-weight: 500;
-    font-size: 16px;
-    margin: 0;
-    letter-spacing: 0.3px;
-  }
-  h1 {
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    margin: 8px 0 30px;
-
-    position: relative;
-    display: inline-block;
-    padding: 0 0 23px;
-    line-height: 1;
-    &:before {
-      position: absolute;
-      background-color: #070508;
-      height: 3px;
-      width: 70px;
-      content: "";
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: 0 auto;
-    }
-  }
-  p {
-    font-size: 16px;
-    color: #4b4b4b;
-    line-height: 30px;
-    width: 66%;
-    margin: 0 auto;
-    @media #{$lg-layout} {
-      width: 80%;
-    }
-    @media #{$md-layout} {
-      width: 95%;
-    }
-    @media #{$xs-layout} {
-      width: 100%;
-      font-size: 15px;
-    }
-  }
-}
 
 .team-area {
   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
@@ -100,7 +51,6 @@
 }
 
 .team-wrapper {
-  background-color: #f9f7e8;
   .team-img {
     position: relative;
 
@@ -152,6 +102,7 @@
     }
   }
   .team-content {
+    background-color: #f9f7e8;
     padding: 70px 9px 43px;
     color: black;
     h4 {

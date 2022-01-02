@@ -20,8 +20,11 @@ const Calendar = () => {
   const [events, setEvents] = useState([]);
   const [counter, setCounter] = useState(0)
 
+  useEffect(() => {
+    dispatch(eventRequest({user_id:1}));
+  }, []);
+
   const eventData = useSelector(state => state.event.eventData);
-  console.log(`이벤트까지 왔다... ${JSON.stringify(eventData)}`)
   useEffect(() => {
     dispatch(eventRequest({user_id: 1}));
   }, []);

@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { HistoryDataPayload, historyFailure, HistoryPayload, historyRemoveFailure, HistoryRemovePayload, historyRemoveRequest, historyRemoveSuccess, historyRequest, historySuccess, ListDataPayload } from "features/history/reducer/historySlice";
+import { HistoryDataPayload, historyFailure, HistoryPayload, historyRemoveFailure, historyRemoveFromTodoFailure, historyRemoveFromTodoRequest, historyRemoveFromTodoSuccess, HistoryRemovePayload, historyRemoveRequest, historyRemoveSuccess, historyRequest, historySuccess, ListDataPayload } from "features/history/reducer/historySlice";
 import { historyListRequest, historyListSuccess, historyListFailure } from "features/history/reducer/historySlice"
 import { HistoryModifyPayload, historyModifyRequest, historyModifySuccess, historyModifyFailure } from "features/history/reducer/historySlice";
 import { historyAutoAddRequest, historyAutoAddSuccess, historyAutoAddFailure } from "features/history/reducer/historySlice";
@@ -12,10 +12,13 @@ function* create(action: PayloadAction<HistoryPayload>) {
             historyAPI.createAPI,
             action.payload
         );
+        // console.log(`title :: ${JSON.stringify(result)}`)
         yield put(historySuccess(result));
+        // console.log(`saga return :: ${JSON.stringify(result['data'])}`)
         if (result.data.log_type != "todo") {
             window.location.href = "/history/history"
         }
+        
     } catch (error: any) {
         yield put(historyFailure(error))
         alert(`ERROR :: ${error}`)
@@ -91,7 +94,8 @@ function* remove(action: PayloadAction<HistoryRemovePayload>) {
             action.payload
         );
         yield put(historyRemoveSuccess(result));
-        window.location.href = "/history/history"
+        location.reload()
+        
     } catch (error: any) {
         yield put(historyRemoveFailure(error))
         alert(error)
@@ -99,4 +103,22 @@ function* remove(action: PayloadAction<HistoryRemovePayload>) {
 }
 export function* watchHistoryRemove() {
     yield takeLatest(historyRemoveRequest.type, remove);
+}
+// 삭제
+function* removeFromTodo(action: PayloadAction<HistoryRemovePayload>) {
+    try {
+        const result: HistoryRemovePayload = yield call(
+            historyAPI.removeFromTodoAPI,
+            action.payload
+        );
+        yield put(historyRemoveFromTodoSuccess(result));
+        location.reload()
+        
+    } catch (error: any) {
+        yield put(historyRemoveFromTodoFailure(error))
+        alert(error)
+    }
+}
+export function* watchHistoryRemoveFromTodo() {
+    yield takeLatest(historyRemoveFromTodoRequest.type, removeFromTodo);
 }

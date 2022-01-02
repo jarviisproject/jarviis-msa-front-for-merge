@@ -25,7 +25,6 @@ export default function TaskAdd() {
     console.log(date)
     const test=(e)=>{
         setTask(e.target.value)
-        console.log(task)
     }
     // const defaultValues = {
     //     user_id: 1, //로그인 되면 id 넣기
@@ -59,7 +58,7 @@ export default function TaskAdd() {
             onChange={test}
             />
             <button style={{marginLeft:"20px"}} type="submit" className="btn btn__primary btn__lg"  
-            onClick={async()=>await dispatch(addTaskRequest({title: task, start:date}))}
+            onClick={async()=>await dispatch(addTaskRequest({user_id:1 ,title: task, start:date}))}
             >
                 Add
             </button>

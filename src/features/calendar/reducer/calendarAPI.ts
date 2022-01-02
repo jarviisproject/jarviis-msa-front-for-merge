@@ -1,6 +1,6 @@
 import axios from "axios";
 import { addEventPayload, idParamType, UserParamType } from "./calendarSlice";
-const SERVER = 'http://127.0.0.1:8002/api/event'
+const SERVER = 'http://127.0.0.2:8002/api/event'
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': 'JWT fefege..'

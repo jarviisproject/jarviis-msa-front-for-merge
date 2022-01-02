@@ -18,6 +18,11 @@ export interface taskListDataPayload {
   ]
 }
 
+// task to history
+export interface taskPayload {
+  task_id: number;
+  log_id: number;
+}
 
 
 //요청하는 데이터

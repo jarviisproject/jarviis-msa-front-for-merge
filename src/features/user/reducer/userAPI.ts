@@ -8,6 +8,8 @@ const headers = {
 };
 
 function loginAPI(data: LoginPayload) {
+  alert("ㄱㄱㄱㄱㄱㄱ")
+  alert(`API data :: ${JSON.stringify(data)}`)
   return axios.post(`${SERVER}/users/login`, JSON.stringify(data), { headers });
 }
 function joinAPI(data: JoinPayload) {

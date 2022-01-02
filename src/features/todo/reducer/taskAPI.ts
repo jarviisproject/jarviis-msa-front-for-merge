@@ -1,11 +1,10 @@
 import axios from "axios";
 import { ParamType, completionPayload, addTaskPayload, idParamType } from "features/todo/reducer/taskSlice";
-const SERVER = 'http://127.0.0.1:8002/api/event'
+const SERVER = 'http://127.0.0.2:8002/api/event'
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': 'JWT fefege..'
 }
-
 
 function taskAPI( data: ParamType){
   return axios.get(`${SERVER}/date/${data.date}`)
@@ -16,6 +15,7 @@ function completeAPI(data : completionPayload){
 }
 
 function addTaskAPI(data : addTaskPayload){
+  console.log('addtaskAPI')
   return axios.post(`${SERVER}/create`, data, { headers });
 }
 

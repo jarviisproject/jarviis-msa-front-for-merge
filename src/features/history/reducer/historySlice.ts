@@ -19,6 +19,7 @@ export interface HistoryDataPayload {
         weather: string;
         log_type: string;
         contents: string;
+        event_id: number;
         user_id: number;
 
     }
@@ -40,6 +41,7 @@ export interface HistoryPayload {
     weather: string;
     log_type: string;
     contents: string;
+    event_id: number;
     user_id: number;
 }
 
@@ -59,6 +61,7 @@ export interface HistoryRemovePayload {
 export interface HistoryState {
     historyLoading: boolean;
     historyData: any;
+    historyTodo: any;
     error: any;
 }
 
@@ -68,6 +71,7 @@ export interface ParamType {
 const initialState: HistoryState = {
     historyLoading: false,
     historyData: null,
+    historyTodo: null,
     error: null,
 };
 
@@ -81,7 +85,14 @@ const historySlice = createSlice({
         },
         historySuccess(state: HistoryState, action: PayloadAction<HistoryDataPayload>) {
             state.historyLoading = false;
-            state.historyData = action.payload;
+            // alert(`성공한 데이터 :: ${JSON.stringify(action.payload)}`)
+            if (action.payload.data.log_type == "todo") {
+                // alert(`투두 데이터 확인! :: ${JSON.stringify(action.payload)}`)
+                state.historyTodo = action.payload;
+            }
+            else{
+                state.historyData = action.payload;
+            }
         },
         historyFailure(state: HistoryState, action: PayloadAction<{ error: any }>) {
             state.historyLoading = true;
@@ -138,6 +149,19 @@ const historySlice = createSlice({
         historyRemoveFailure(state: HistoryState, action: PayloadAction<{ error: any }>) {
             state.historyLoading = true;
             state.error = action.payload;
+        },
+        // 삭제
+        historyRemoveFromTodoRequest(state: HistoryState, _action: PayloadAction<HistoryRemovePayload>) {
+            state.historyLoading = true;
+            state.error = null;
+        },
+        historyRemoveFromTodoSuccess(state: HistoryState, action: PayloadAction<HistoryRemovePayload>) {
+            // alert(`히스토리 del 성공`)
+            state.historyLoading = false;
+        },
+        historyRemoveFromTodoFailure(state: HistoryState, action: PayloadAction<{ error: any }>) {
+            state.historyLoading = true;
+            state.error = action.payload;
         }
 
     }
@@ -169,6 +193,9 @@ export const {
     historyRemoveRequest,
     historyRemoveSuccess,
     historyRemoveFailure,
+    historyRemoveFromTodoRequest,
+    historyRemoveFromTodoSuccess,
+    historyRemoveFromTodoFailure
 } = actions;
 
 export default reducer;

@@ -10,7 +10,7 @@ const headers = {
 }
 
 function createAPI( data: HistoryPayload){
-    // alert(JSON.stringify(data))
+    // alert(`히스토리 추가 테스트 :: ${JSON.stringify(data)}`)
     return axios.post(`${SERVER}/history/create`, JSON.stringify(data), { headers })
 }
 function listAPI( data: ListDataPayload){
@@ -25,7 +25,13 @@ function autoAddAPI( data: HistoryDataPayload){
     return axios.get(`${SERVER}/history/upload`)
 }
 function removeAPI( data: HistoryRemovePayload){
+    // alert(`히스토리 삭제 테스트 :: ${JSON.stringify(data)}`)
+
     return axios.delete(`${SERVER}/history/remove/${data}`)
+}
+function removeFromTodoAPI( data: HistoryRemovePayload){
+    // alert(`히스토리 삭제 테스트 :: ${JSON.stringify(data)}`)
+    return axios.delete(`${SERVER}/history/remove-from-todo/${data}`)
 }
 // const modify = x => axios.put(`${SERVER}/history/modify/${x}`)
 // const remove = x => axios.delete(`${SERVER}/history/remove/${x}`)
@@ -40,5 +46,6 @@ export default {
     listAPI,
     modifyAPI,
     autoAddAPI,
-    removeAPI
+    removeAPI,
+    removeFromTodoAPI
 }

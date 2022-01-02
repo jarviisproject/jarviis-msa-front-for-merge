@@ -25,6 +25,7 @@ export default function TimelineAdd() {
         location: '',
         address: '',
         log_date: '',
+        event_id: 0,
         weather: '',
     };
     const dispatch = useDispatch()

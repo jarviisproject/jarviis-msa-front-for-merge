@@ -61,6 +61,7 @@ const suggestionSlice = createSlice({
 
     //suggestion
     suggestionRequest(state: SuggsetionState, _action: PayloadAction<SuggestionPayload>) {
+      console.log(`suggestionRequest`)
       state.suggestionLoading = true;
       state.error = null;
     },
@@ -82,7 +83,6 @@ const suggestionSlice = createSlice({
     },
 
     suggestionAcceptSuccess(state: SuggsetionState, action: PayloadAction<SuggestionResultPayload>) {
-      console.log('suggestionAcceptSuccess 실행')
       state.suggestionLoading = false;
       state.suggestionData = action.payload;
     },

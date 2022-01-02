@@ -11,6 +11,7 @@ function* eventList(action: PayloadAction<UserParamType>){
             calendarAPI.eventListAPI,
             action.payload
         );
+        console.log(`eventdatapayload - 사가 ${JSON.stringify(result)}`)
         yield put(eventSuccess(result));
     }
     catch (error:any){
