@@ -49,6 +49,7 @@ export interface UserModifyDataPayload {
 }
 
 //요청하는 데이터
+
 export interface ExistPayload {
   user_email: string;
 }
@@ -91,6 +92,9 @@ export interface UserState {
   error: any;
   token: null;
 }
+export interface List{
+  user_email: string;
+}
 // api의 param 타입
 export interface ParamType {
   user_email: string;
@@ -111,19 +115,14 @@ const userSlice = createSlice({
       state.userLoading = true;
       state.error = null;
     },
-
     loginSuccess(
       state: UserState,
       action: PayloadAction<UserLoginDataPayload>
     ) {
-      alert(`외않되 :: ${JSON.stringify(action.payload)}`)
       state.userLoading = false;
       state.userData = action.payload;
     },
-
     loginFailure(state: UserState, action: PayloadAction<{ error: any }>) {
-      
-      alert(`외않되 :: ${JSON.stringify(action.payload)}`)
       state.userLoading = false;
       state.error = action.payload;
     },
@@ -181,6 +180,19 @@ const userSlice = createSlice({
       state.userLoading = true;
       state.error = null;
     },
+    listRequest(state: UserState, _action: PayloadAction<List>) {
+      alert("슬라이스 리퀘스트")
+      state.userLoading = true;
+      state.error = null;
+    },
+    listSuccess(state: UserState,action: PayloadAction<UserDataPayload>) {
+      state.userLoading = false;
+      state.userData = action.payload;
+    },
+    listFailure(state: UserState, action: PayloadAction<{ error: any }>) {
+      state.userLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -207,5 +219,8 @@ export const {
   deleteFailure,
   deleteRequest,
   deleteSuccess,
+  listFailure,
+  listRequest,
+  listSuccess
 } = actions;
 export default reducer;

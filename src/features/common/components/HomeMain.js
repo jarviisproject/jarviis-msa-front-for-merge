@@ -24,7 +24,7 @@ export default function HomeMain() {
       </h1> */}
 
       <Flash ><h3>Happy New Year <br/> HM & JH & IS  </h3>
-      <span role="emoji" aria-lavel="tree" style={{fontSize:"30vh"}}>트리</span>
+      <span role="emoji" aria-lavel="tree" style={{fontSize:"30vh"}}>🦁</span>
       </Flash>
       
       

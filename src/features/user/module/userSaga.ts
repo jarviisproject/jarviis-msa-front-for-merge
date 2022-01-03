@@ -23,6 +23,10 @@ import {
   deleteRequest,
   RemovePayload,
   deleteSuccess,
+  List,
+  listSuccess,
+  listFailure,
+  listRequest,
 } from "features/user/reducer/userSlice";
 import { userAPI } from "features/user";
 
@@ -80,7 +84,7 @@ function* exist(action: PayloadAction<ExistPayload>) {
       );
       yield put(loginSuccess(result));
       window.localStorage.setItem('sessionUser', JSON.stringify(result.data))
-      window.location.href = "/home"
+      window.location.href = "/suggestion/event"
     } catch (error: any) {
       alert("아이디 혹은 비밀번호가 틀렸습니다😞")
       yield put(loginFailure(error));
@@ -97,12 +101,25 @@ function* exist(action: PayloadAction<ExistPayload>) {
       alert("수정이 완료되었습니다✔️")
       window.location.href = "/mypage/setting"
 
-
     } catch (error: any) {
-      // alert("아이디오류")
       yield put(modifyFailure(error));
     }
   }
+  function* list(action: PayloadAction<List>) {
+    try {
+      alert("사가 트라이")
+      const result: UserDataPayload = yield call(
+        userAPI.listAPI,
+        action.payload
+      );
+      yield put(listSuccess(result));
+      alert("수정이 완료되었습니다✔️")
+
+    } catch (error: any) {
+      yield put(listFailure(error));
+    }
+  }
+
 
   // Watch 함수
   export function* watchLogin() {
@@ -119,4 +136,7 @@ function* exist(action: PayloadAction<ExistPayload>) {
   }
   export function* watchRemove() {
     yield takeLatest(deleteRequest.type, remove);
+  }
+  export function* watchList() {
+    yield takeLatest(listRequest.type, list);
   }

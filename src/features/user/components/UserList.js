@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -16,6 +17,8 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import 'features/user/style/UserList.scss'
+import { useSelector, useDispatch } from 'react-redux';
+import { listRequest } from '../reducer/userSlice';
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -80,12 +83,12 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat) {
-  return { name, calories, fat };
+function createData(name,email, birth, phone,address,user_interests,job) {
+  return { name,email,birth, phone,address ,user_interests,job};
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7),
+  createData('서수완', "seo@seo.com","930823", "010-0000-0000", "서울시", "개발자", "다이어트"),
   createData('Donut', 452, 25.0),
   createData('Eclair', 262, 16.0),
   createData('Frozen yoghurt', 159, 6.0),
@@ -116,6 +119,13 @@ export default function UserList() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+  const dispatch = useDispatch()
+  useEffect(async()=>{
+    dispatch(await listRequest())
+    
+  },[])
+  const test_data = useSelector(state => state.data)
+  console.log(test_data)
 
   return (
     <div className='user-list'>
@@ -126,16 +136,37 @@ export default function UserList() {
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+            <TableRow key={row.email}>
+              <TableCell component="th" style={{ width: 30 }} scope="row">
+                {row.email}
+              </TableCell>
+
+              <TableCell style={{ width: 30 }} align="right">
                 {row.name}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.calories}
+
+              <TableCell style={{ width: 30 }} align="right">
+                {row.birth}
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.fat}
+
+              <TableCell style={{ width: 30 }} align="right">
+                {row.phone}
               </TableCell>
+
+              <TableCell style={{ width: 30 }} align="right">
+                {row.address}
+              </TableCell>
+
+              <TableCell style={{ width: 30 }} align="right">
+                {row.user_interests}
+              </TableCell>
+
+              <TableCell style={{ width: 30 }} align="right">
+                {row.job}
+              </TableCell>
+
+          
+
             </TableRow>
           ))}
 

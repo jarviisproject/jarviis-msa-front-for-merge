@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ModifyPayload,ExistPayload, JoinPayload, LoginPayload, RemovePayload } from "./userSlice";
+import { ModifyPayload,ExistPayload, JoinPayload, LoginPayload, RemovePayload, List } from "./userSlice";
 const SERVER = "http://127.0.0.1:8000/api";
 // const SERVER = "http://127.0.0.1:3001/";
 const headers = {
@@ -8,7 +8,6 @@ const headers = {
 };
 
 function loginAPI(data: LoginPayload) {
-  alert("ㄱㄱㄱㄱㄱㄱ")
   alert(`API data :: ${JSON.stringify(data)}`)
   return axios.post(`${SERVER}/users/login`, JSON.stringify(data), { headers });
 }
@@ -24,11 +23,9 @@ function modifyAPI(data: ModifyPayload) {
 function removeAPI(data: RemovePayload) {
   return axios.delete(`${SERVER}/users/remove/${data}`);
 }
-function listAPI(data: "") {
+function listAPI(data: List) {
+  alert("가니")
   return axios.get(`${SERVER}/users/list/${data}`);
-}
-function findAPI(data: "") {
-  return axios.get(`${SERVER}/users/find/${data}`);
 }
 
 export default {
@@ -38,5 +35,4 @@ export default {
   listAPI,
   removeAPI,
   modifyAPI,
-  findAPI
 };

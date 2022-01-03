@@ -20,7 +20,7 @@ const store = createStore(
 )
 //rootSaga 하나로 묶기 
 import { all, fork } from "redux-saga/effects";
-import { watchExist, watchJoin, watchLogin, watchModify, watchRemove } from "features/user/module/userSaga";
+import { watchExist, watchJoin, watchList, watchLogin, watchModify, watchRemove } from "features/user/module/userSaga";
 import { watchCreate, watchHistoryAutoAdd, watchHistoryList, watchHistoryModify, watchHistoryRemove, watchHistoryRemoveFromTodo } from 'features/history/module/historySaga';
 import { rootReducer } from 'app/store';
 import { watchFlowerList, watchRoutine } from 'features/review/module/gardenSaga';
@@ -33,7 +33,7 @@ import { watchAddEvent, watchDeleteEvent, watchEventList } from 'features/calend
 // rootSaga를 만들어줘서 store에 추가해주어야 합니다.
 export default function* rootSaga() {
   // alert('# 0 root saga')
-  yield all([fork(watchLogin),fork(watchJoin),fork(watchExist),fork(watchModify),fork(watchCreate),fork(watchRemove),
+  yield all([fork(watchLogin),fork(watchJoin),fork(watchExist),fork(watchModify),fork(watchCreate),fork(watchRemove),fork(watchList),
     fork(watchHistoryList), fork(watchHistoryModify), fork(watchHistoryAutoAdd), fork(watchHistoryRemove), fork(watchHistoryRemoveFromTodo),
     fork(watchFlowerList), fork(watchRoutine),
     fork(watchDiaryFind), fork(watchDiaryMemo), fork(watchDiaryCreate),
